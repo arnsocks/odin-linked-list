@@ -1,17 +1,18 @@
 import Node from "./node.js";
 
 export default class LinkedList {
-  constructor() {
-    this.head = null;
-    this.tail = null;
-  }
+  #head = null;
+  #tail = null;
+  // constructor() {
+  //   this.#head = null;
+  //   this.tail = null;
+  // }
   append(value) {
     // adds a new node containing VALUE to the end of the list
-
-    if (this.head == null) {
+    if (this.#head == null) {
       this.prepend(value);
     } else {
-      let temp = this.head;
+      let temp = this.#head;
       while (temp.nextNode != null) {
         temp = temp.nextNode;
       }
@@ -21,15 +22,14 @@ export default class LinkedList {
 
   prepend(value) {
     // adds a new node containing VALUE to the start of the list
-    this.head = new Node(value, this.head);
+    this.#head = new Node(value, this.#head);
   }
 
   size() {
     // returns the total number of nodes in the list
-
-    if (this.head == null) return 0;
+    if (this.#head == null) return 0;
     else {
-      let temp = this.head;
+      let temp = this.#head;
       let length = 1;
       while (temp.nextNode != null) {
         length++;
@@ -41,10 +41,19 @@ export default class LinkedList {
 
   head() {
     // returns the first node in the list
+    return this.#head;
   }
 
   tail() {
     // returns the last node in the list
+    if (this.#head == null) return null;
+    else {
+      let temp = this.#head;
+      while (temp.nextNode != null) {
+        temp = temp.nextNode;
+      }
+      return temp;
+    }
   }
 
   at(index) {
