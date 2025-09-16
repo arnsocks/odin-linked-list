@@ -15,3 +15,9 @@ console.log("Index 1: " + myList.at(1).value);
 myList.pop();
 
 console.log("Tail: " + myList.tail().value);
+
+console.log("Contains 'purple': " + myList.contains("purple"));
+console.log("Contains 'elephant': " + myList.contains("elephant"));
+console.log("Index of 'purple': " + myList.find("purple"));
+console.log("Index of 'bananas': " + myList.find("bananas"));
+console.log(myList.toString());

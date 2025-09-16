@@ -80,15 +80,37 @@ export default class LinkedList {
 
   contains(value) {
     // returns true if the VALUE is in the list and otherwise returns false
+    let temp = this.#head;
+    while (temp != null) {
+      if (temp.value === value) return true;
+      temp = temp.nextNode;
+    }
+    return false;
   }
 
   find(value) {
     // returns the index of the node containing VALUE, or null if not found
+    let temp = this.#head;
+    let i = 0;
+    while (temp != null) {
+      if (temp.value === value) return i;
+      temp = temp.nextNode;
+      i++;
+    }
+    return null;
   }
 
   toString() {
     // represents the LinkedList object as strings, so you can print them out and preview them in console. Format should be:
     // ( value ) -> ( value ) -> ( value ) -> null
+    let temp = this.#head;
+    let string = "";
+    while (temp != null) {
+      string = string.concat(`( ${temp.value} ) -> `);
+      temp = temp.nextNode;
+    }
+    string = string.concat("null");
+    return string;
   }
 
   // BONUS
