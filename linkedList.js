@@ -58,10 +58,24 @@ export default class LinkedList {
 
   at(index) {
     // returns the node at the given index
+    let temp = this.#head;
+    let i = 0;
+    while (index <= this.size()) {
+      if (i === index) return temp;
+      temp = temp.nextNode;
+      i++;
+    }
   }
 
   pop() {
     // removes the last element from the list
+    let current = this.#head;
+    let next = this.#head.nextNode;
+    while (next.nextNode != null) {
+      current = next;
+      next = next.nextNode;
+    }
+    current.nextNode = null;
   }
 
   contains(value) {
