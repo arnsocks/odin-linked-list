@@ -117,6 +117,24 @@ export default class LinkedList {
 
   insertAt(value, index) {
     // inserts a new node with the provided VALUE at the given INDEX
+    if (index == 0) {
+      // insert at index 0 is the same as prepend
+      this.prepend(value);
+      return;
+    } else if (index == this.size()) {
+      this.append(value);
+      return;
+    } else if (index > this.size()) return; // Do nothing if index is not in list
+
+    let current = this.#head;
+    let next = this.#head.nextNode;
+    let i = 0;
+    while (i < index - 1) {
+      current = next;
+      next = next.nextNode;
+      i++;
+    }
+    current.nextNode = new Node(value, next);
   }
 
   removeAt(index) {
