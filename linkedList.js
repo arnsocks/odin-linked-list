@@ -149,9 +149,4 @@ export default class LinkedList {
     }
     current.nextNode = next.nextNode;
   }
-
-  // DEBUG
-  speak(message) {
-    console.log(message + "- From the Linked List file");
-  }
 }
