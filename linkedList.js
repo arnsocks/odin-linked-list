@@ -2,11 +2,8 @@ import Node from "./node.js";
 
 export default class LinkedList {
   #head = null;
-  #tail = null;
-  // constructor() {
-  //   this.#head = null;
-  //   this.tail = null;
-  // }
+  constructor() {}
+
   append(value) {
     // adds a new node containing VALUE to the end of the list
     if (this.#head == null) {
@@ -113,8 +110,6 @@ export default class LinkedList {
     return string;
   }
 
-  // BONUS
-
   insertAt(value, index) {
     // inserts a new node with the provided VALUE at the given INDEX
     if (index == 0) {
@@ -139,6 +134,20 @@ export default class LinkedList {
 
   removeAt(index) {
     //removes the node at the given INDEX
+    if (index === 0) {
+      this.#head = this.#head.nextNode;
+      return;
+    } else if (index >= this.size) return;
+
+    let current = this.#head;
+    let next = this.#head.nextNode;
+    let i = 0;
+    while (i < index - 1) {
+      current = next;
+      next = next.nextNode;
+      i++;
+    }
+    current.nextNode = next.nextNode;
   }
 
   // DEBUG
